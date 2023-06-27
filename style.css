@@ -31,6 +31,7 @@ a{
     text-align: center;
     padding: 15px 20px;
     border: none;
+    border-radius: 10px;
 }
 
 .seccion{
@@ -85,6 +86,17 @@ header .container nav a{
 
 
 /* Seccion Inicio*/
+.whatsapp{
+    position: fixed;
+    right: 0;
+    top: 90%;
+    transform: translateY(-60%);
+    z-index: 2;
+}
+.whatsapp:hover{
+    opacity: 0.8;
+}
+
 #inicio{
     position: relative;
     
@@ -110,6 +122,10 @@ header .container nav a{
 
 #inicio .bloque-inicio p{
     color: white;
+    font-weight: bold;
+    font-size: 20px;
+    
+    
 }
 
 .boton.boton-rojo{
@@ -199,7 +215,7 @@ header .container nav a{
         text-align: center;
         position: absolute;
         top: 40%;
-        color: white;
+        color: #ff6600;
         font-size: 18px;
         width: 100%;
     }
@@ -214,6 +230,19 @@ header .container nav a{
 
     #galeria .cuadrado-perfecto:hover h4{
         display: none;
+    }
+
+    .center{
+        margin: 15px;
+        padding: 15px 20px;;
+        text-align: center;
+        position: relative;
+        left: 50%;
+        color: white;
+        background-color: #ff6600;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 10px;
     }
 /*Fin seccion Galeria*/
 
@@ -433,4 +462,23 @@ header .container nav a{
         footer .redes{
            justify-content: center; 
         }
+    }
+
+    /*Mensaje de alerta*/
+    .oculto{
+        display: none;
+    }
+    .success{
+        padding: 5px;
+        background-color: #4BB543;
+        border-radius: 3px;
+    }
+    .error{
+        padding: 5px;
+        background-color: #cc0000;
+        border-radius: 3px;
+    }
+    .msg{
+        color: white;
+        font-size: 15px;
     }
