@@ -49,6 +49,7 @@ a{
 .columna{
     padding-right: 15px;
     padding-left: 15px;
+    margin-bottom: 15px;
 }
 /* Fin elementos generales*/
 
@@ -425,6 +426,16 @@ header .container nav a{
             height: 100%;
             object-fit: cover;
             object-position: center ;
+        }
+
+        #inicio .bloque-inicio{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 350px;
+            text-align: center;
+            margin-left: -175px;
+            /*background-image: url(img/fondo.jpg);*/
         }
 
         .columna-mobile-100{

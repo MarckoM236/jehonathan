@@ -54,6 +54,7 @@ $(document).ready(
                         divAlert.appendChild(p);
                         divAlert.classList.remove("oculto");
                         divAlert.classList.add("success");
+                        cleanFields();
                     }
                     else{
                         if(p_old){
@@ -90,6 +91,36 @@ $(document).ready(
         $('#busosCapucha').click(function(event){
             event.preventDefault();
             getGallery('getProductsBusosCapucha','Products/BusosCapucha');
+            window.location.href = "#openModal";
+        });
+        $('#prendasDama').click(function(event){
+            event.preventDefault();
+            getGallery('getProductsPrendasDama','Products/PrendasDama');
+            window.location.href = "#openModal";
+        });
+        $('#blusonesDama').click(function(event){
+            event.preventDefault();
+            getGallery('getProductsBlusonesDama','Products/BlusonesDama');
+            window.location.href = "#openModal";
+        });
+        $('#playerasAmerica').click(function(event){
+            event.preventDefault();
+            getGallery('getProductsPlayerasAmerica','Products/PlayerasAmerica');
+            window.location.href = "#openModal";
+        });
+        $('#playerasDepCali').click(function(event){
+            event.preventDefault();
+            getGallery('getProductsPlayerasDepCali','Products/PlayerasDepCali');
+            window.location.href = "#openModal";
+        });
+        $('#camisetasNino').click(function(event){
+            event.preventDefault();
+            getGallery('getProductsCamisetasNino','Products/CamisetasNino');
+            window.location.href = "#openModal";
+        });
+        $('#camisetasAnime').click(function(event){
+            event.preventDefault();
+            getGallery('getProductsCamisetasAnime','Products/CamisetasAnime');
             window.location.href = "#openModal";
         });
 
@@ -144,4 +175,15 @@ function getYear(){
     var year = today.getFullYear();
     var cont = document.getElementById('year');
     cont.innerHTML = year;
+}
+
+function cleanFields(){
+    //inputs
+    var name = document.getElementById('name');
+    var email = document.getElementById('email');
+    var message = document.getElementById('message');
+
+    name.value = "";
+    email.value = "";
+    message.value = "";
 }

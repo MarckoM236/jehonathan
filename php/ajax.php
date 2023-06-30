@@ -29,6 +29,26 @@ if(isset($_GET['function']) && !empty($_GET['function'])) {
             $res = $files -> getGallery('Products/BusosCapucha');
             echo json_encode($res);
             break;
+        case 'getProductsPrendasDama': 
+            $res = $files -> getGallery('Products/PrendasDama');
+            echo json_encode($res);
+            break;
+        case 'getProductsBlusonesDama': 
+            $res = $files -> getGallery('Products/BlusonesDama');
+            echo json_encode($res);
+            break;
+        case 'getProductsPlayerasAmerica': 
+            $res = $files -> getGallery('Products/PlayerasAmerica');
+            echo json_encode($res);
+            break;
+        case 'getProductsCamisetasNino': 
+            $res = $files -> getGallery('Products/CamisetasNino');
+            echo json_encode($res);
+            break;
+        case 'getProductsCamisetasAnime': 
+            $res = $files -> getGallery('Products/CamisetasAnime');
+            echo json_encode($res);
+            break;
         case 'sendEmail': 
             $res = $files->SendEmail($client,$email,$message);
             echo json_encode($res);
