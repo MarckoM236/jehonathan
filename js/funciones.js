@@ -129,46 +129,46 @@ $(document).ready(
 
 });
 
+//------------------------------------------------------------------------------
+//Images
 
-function getGallery(function_string,route){
-    var images = [];
-
-                    $.ajax({
-                    url: "php/ajax.php",
-                    method: "GET",
-                    async: false,
-                    data: {function: function_string},
-                    dataType: "json",
-                    success: function(respuesta) {
-                    //onsole.log(respuesta[3]);
-                    images = respuesta;
-                    images.splice(0, 2);
-                    }
-                    });
+let images = [];
+let currentIndex = 0;
+const slideImg = document.getElementById("slideImg");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
 
-                    let currentIndex = 0;
-                    const slideImg = document.getElementById("slideImg");
-                    const prevBtn = document.getElementById("prevBtn");
-                    const nextBtn = document.getElementById("nextBtn");
+function getGallery(function_string, route) {
+    images = [];
+    $.ajax({
+        url: "php/ajax.php",
+        method: "GET",
+        async: false,
+        data: { function: function_string },
+        dataType: "json",
+        success: function(respuesta) {
+            images = respuesta;
+            images.splice(0, 2);
+        }
+    });
 
-                    function showSlide(index) {
-                    slideImg.src = 'img/'+route+'/'+images[index];
-                    }
+    prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        slideImg.src = 'img/'+route+'/'+images[currentIndex];
+    });
 
-                    prevBtn.addEventListener("click", () => {
-                    currentIndex = (currentIndex - 1 + images.length) % images.length;
-                    showSlide(currentIndex);
-                    });
+    nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        slideImg.src = 'img/'+route+'/'+images[currentIndex];
+    });
 
-                    nextBtn.addEventListener("click", () => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    showSlide(currentIndex);
-                    });
-
-                    // Show first image on page load
-                    showSlide(currentIndex);
+    // Show first image on page load
+    slideImg.src = 'img/'+route+'/'+images[currentIndex];
 }
+
+
+//------------------------------------------------------------------------------
 
 function getYear(){
     var today = new Date();
