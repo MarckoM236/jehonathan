@@ -4,8 +4,13 @@ class ImageRandom{
     //Rename a random image as principal.jpeg to change the main display image of the categories.
     function random($ruta){
         $route = "img/Products/".$ruta;
+        //for windows
         $routeReplace = str_replace('/', '\\', $route);
         $handle = dirname(__DIR__) . DIRECTORY_SEPARATOR . $routeReplace;
+
+        //for linux
+        //$handle = dirname(__DIR__) . DIRECTORY_SEPARATOR . $route;
+        
         if ($handle) {
             $listFiles = array_diff(scandir($handle), array('..', '.'));
             $newList = array_diff($listFiles, array('principal.jpeg'));
@@ -18,9 +23,9 @@ class ImageRandom{
                 $extPrin = pathinfo($filePrin, PATHINFO_EXTENSION);
                 $renameFilePrin = pathinfo($oldFile, PATHINFO_FILENAME);
                 
-                rename($filePrin,$renameFilePrin.'_old'.$extPrin);
+                rename($filePrin,$renameFilePrin.'_old.'.$extPrin);
                 rename($oldFile,$filePrin);
-                rename($renameFilePrin.'_old'.$extPrin,$oldFile);     
+                rename($renameFilePrin.'_old.'.$extPrin,$oldFile);    
             }
         }
     }
