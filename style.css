@@ -493,3 +493,8 @@ header .container nav a{
         color: white;
         font-size: 15px;
     }
+
+    .date{
+        color: EBE9E8;
+        font-size: small;
+    }

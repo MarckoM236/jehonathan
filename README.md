@@ -1,2 +1,2 @@
 # jehonathan
-landing page, clothing store. HTML|CSS|JS
+landing page, clothing store. HTML| CSS| JS
