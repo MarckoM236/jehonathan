@@ -124,9 +124,11 @@ $(document).ready(
             window.location.href = "#openModal";
         });
 
- //get year now
- getYear();
+        //get year now
+        getYear();
 
+        //update date
+        $('.date').text(dateNow());
 });
 
 //------------------------------------------------------------------------------
@@ -175,6 +177,17 @@ function getYear(){
     var year = today.getFullYear();
     var cont = document.getElementById('year');
     cont.innerHTML = year;
+}
+
+//update date minus one week
+function dateNow(){
+    var date = new Date();
+    date.setDate(date.getDate() - 7);
+    var day = (date.getDate()).toString().padStart(2, '0');
+    var month = (date.getMonth() + 1).toString().padStart(2, '0'); //in js months 0-11
+    var year = date.getFullYear();
+    var dateNow = "Ultima actualización: " + day + "/" + month + "/" + year; 
+    return dateNow;
 }
 
 function cleanFields(){
