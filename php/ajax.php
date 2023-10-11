@@ -41,6 +41,10 @@ if(isset($_GET['function']) && !empty($_GET['function'])) {
             $res = $files -> getGallery('Products/PlayerasAmerica');
             echo json_encode($res);
             break;
+        case 'getProductsPlayerasDepCali': 
+            $res = $files -> getGallery('Products/PlayerasDepCali');
+            echo json_encode($res);
+            break;
         case 'getProductsCamisetasNino': 
             $res = $files -> getGallery('Products/CamisetasNino');
             echo json_encode($res);

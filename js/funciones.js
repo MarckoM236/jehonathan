@@ -2,6 +2,7 @@
 
 $(document).ready(
     function(){
+
         //Display Menu in Mobile
         $(".hamb").click(
             function(e){
@@ -71,6 +72,18 @@ $(document).ready(
                 }
               })
         });
+
+        //load images products -----------------
+        mainImage("img/Products/PrendasDama/principal","img-dama");
+        mainImage("img/Products/BMC/principal","img-bmc");
+        mainImage("img/Products/Mamelucos/principal","img-mamelucos");
+        mainImage("img/Products/BusosCapucha/principal","img-busosCapucha");
+        mainImage("img/Products/BlusonesDama/principal","img-blusonesDama");
+        mainImage("img/Products/PlayerasAmerica/principal","img-america");
+        mainImage("img/Products/PlayerasDepCali/principal","img-depCali");
+        mainImage("img/Products/CamisetasNino/principal","img-nino");
+        mainImage("img/Products/CamisetasAnime/principal","img-anime");
+        //--------------------------------------
 
         // Request to the server to load elements in the gallery
         $('#loadGallery').click(function(event){
@@ -151,7 +164,14 @@ function getGallery(function_string, route) {
         dataType: "json",
         success: function(respuesta) {
             images = respuesta;
-            images.splice(0, 2);
+            //images.splice(0, 2);
+            let valDelete = ['.','..']
+            for(let i = 0; i < valDelete.length; i++){
+                let index = images.indexOf(valDelete[i]);
+                if (index !== -1) {
+                    images.splice(index, 1);
+                }
+            }           
         }
     });
 
@@ -166,9 +186,39 @@ function getGallery(function_string, route) {
     });
 
     // Show first image on page load
-    slideImg.src = 'img/'+route+'/'+images[currentIndex];
+    slideImg.src = 'img/'+route+'/'+images[0];
 }
 
+function mainImage(route, id){
+    try {
+        var imagenElement = document.getElementById(id);
+        var extensions = [".jpeg", ".jpg",".png"];
+
+        for (var i = 0; i < extensions.length; i++) {
+
+            var url = route + extensions[i];
+
+            // Try to load the image
+            var img = new Image();
+            img.src = url;
+
+            img.onload = function () {
+                // When the image is loaded successfully, it maps the URL to the src attribute of the img tag
+                imagenElement.src = this.src;
+            };
+
+            img.onerror = function () {
+                // If there is an error loading the image, try the following extension
+                if (i < extensions.length - 1) {
+                    img.src = "";
+                } 
+            };
+        }
+    } catch (error) {
+       console.log(error); 
+    }
+
+}
 
 //------------------------------------------------------------------------------
 
